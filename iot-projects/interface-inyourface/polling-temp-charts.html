@@ -176,7 +176,7 @@
       $.getJSON("http://devices.webofthings.io/pi/sensors/temperature", function (result) 
       {
         addDataPoint(result, regData, regChart);
-
+        updateRegRecords(result.value);
       });
       setTimeout(doPoll, 5000);
     }
@@ -186,6 +186,7 @@
     // TODO 4: WebSocket Polling
     // Create a new WebSocket connection here
     var socket = new WebSocket('ws://devices.webofthings.io/pi/sensors/temperature');
+    
     socket.onmessage = function (event) {
       // Fill in the body of the onmessage function
     };
