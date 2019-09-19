@@ -168,6 +168,7 @@
 
     function updateWSRecords(value){
       // Update the WebSocket polling records
+
     }
 
     // TODO 3: Regular Polling
@@ -188,13 +189,14 @@
     var socket = new WebSocket('ws://devices.webofthings.io/pi/sensors/temperature');
     
     socket.onmessage = function (event) {
+      var result = JSON.parse(event.data);
+      addDataPoint(result, wsData, wsChart);
       // Fill in the body of the onmessage function
     };
 
     socket.onerror = function (error) {
       // Fill in the body of the onerror function
-      var result = JSON.parse(event.data);
-      addDataPoint(result, wsData, wsChart);
+    
     };
 
 
